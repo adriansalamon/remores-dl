@@ -23,7 +23,8 @@ cargo install --git https://github.com/adriansalamon/remores-dl
 
 Otherwise, you can grab a precompiled binary from 
 [releases](https://github.com/adriansalamon/remores-dl/releases/latest)
-for your architecture. Let me know if you need more architectures added.
+for your architecture. `x86_64-unknown-linux-musl` is known to work on KTH
+Ubuntu. Let me know if you need more architectures added.
 
 ### Usage
 
