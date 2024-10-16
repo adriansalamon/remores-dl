@@ -89,13 +89,24 @@ async fn main() -> Result<(), anyhow::Error> {
                 .get_assignment_submissions(course, assignment, &bookings)
                 .await?;
 
+            let n_bookings_with_submissions = bookings_with_submissions
+                .iter()
+                .filter(|(_, submission)| submission.is_some())
+                .count();
             println!(
                 "Found matching submissions for {} bookings",
-                bookings_with_submissions
-                    .iter()
-                    .filter(|(_, submission)| submission.is_some())
-                    .count()
+                n_bookings_with_submissions
             );
+
+            for (booking, _) in bookings_with_submissions
+                .iter()
+                .filter(|(_, submission)| submission.is_none())
+            {
+                println!(
+                    "[Warn]: No submission found for booking: {}, {} @ {}",
+                    booking.name, booking.email, booking.time
+                );
+            }
 
             println!("Downloading submissions to {}...", folder);
 

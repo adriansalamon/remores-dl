@@ -85,12 +85,7 @@ impl Canvas {
 
     pub async fn get_courses(&self) -> Result<Vec<Course>, anyhow::Error> {
         let mut courses: Vec<Course> = self
-            .client
-            .get(&format!("{}/courses", API_URL))
-            .query(&[("per_page", 100)])
-            .send()
-            .await?
-            .json()
+            .get_paginated_data(&format!("{}/courses", API_URL))
             .await?;
 
         courses = courses
@@ -110,12 +105,7 @@ impl Canvas {
 
     pub async fn get_assignments(&self, course_id: &str) -> Result<Vec<Assignment>, anyhow::Error> {
         let mut assignments: Vec<Assignment> = self
-            .client
-            .get(&format!("{}/courses/{}/assignments", API_URL, course_id))
-            .query(&[("per_page", 100)])
-            .send()
-            .await?
-            .json()
+            .get_paginated_data(&format!("{}/courses/{}/assignments", API_URL, course_id))
             .await?;
 
         assignments = assignments
@@ -193,7 +183,6 @@ impl Canvas {
             let file_name = format!("{}-{}", file_name, attachment.display_name);
             let path = PathBuf::from(folder.as_ref()).join(file_name);
             paths.push(path.clone());
-            println!("Downloading attachment to {}", path.display());
 
             let mut file = File::create(path)?;
             let resp = self.client.get(&attachment.url).send().await?;
