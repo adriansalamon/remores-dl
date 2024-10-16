@@ -12,6 +12,14 @@ You will need a `CANVAS_API_TOKEN` environment variable set to a valid
 Canvas API token. You can generate one by going to `Account ->
 Settings -> Approved Integrations` on Canvas.
 
+### Installation
+
+If you have a working Rust compiler (if not see [here](https://rustup.rs/)), you can install by simply running:
+
+```
+cargo install --git https://github.com/adriansalamon/remores-dl
+```
+
 ### Usage
 
 ```bash
@@ -21,23 +29,25 @@ remores-dl help
 List courses:
 
 ```bash
-remores-dl list-courses
+remores-dl courses
 ```
 
 List assignments for a course:
 
 ```bash
-remores-dl list-assignments <course_id>
+remores-dl assignments <course_id>
 ```
 
 Download submissions for an assignment, for students that have booked
 a time slot with your KTH ID:
 
 ```bash
-remores-dl download --kth-id <kth_id> --repo <adk-mastarprov> --course <id> --assignment <id>
+remores-dl download --kth-id <kth_id> --repo <remores_repo_name> --course <id> --assignment <id>
 ```
 
 ### Building
+
+You of course also build from source. Clone the repo and run:
 
 ```bash
 cargo build --release
