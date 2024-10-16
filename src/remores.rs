@@ -155,6 +155,3 @@ impl fmt::Display for Email {
         }
     }
 }
-
-// https://www.csc.kth.se/cgi-bin/bokning/remores1.4/server/decoder?request:overview=yes&repository=adk-mastarprov&shownameemail=yes
-// https://www.csc.kth.se/cgi-bin/bokning/remores1.4/server/decoder
