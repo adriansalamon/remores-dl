@@ -5,6 +5,10 @@ use remores_dl::{canvas::Canvas, remores::Remores};
 
 #[derive(Subcommand)]
 enum Commands {
+    #[clap(about = "List available courses on Canvas where you are either a teacher or a TA.")]
+    Courses,
+    #[clap(about = "List all available assignments for a specific course on Canvas.")]
+    Assignments { course_id: String },
     #[clap(about = "Download submissions from Canvas, matching bookings from REMORES.")]
     Download {
         #[clap(
@@ -21,10 +25,6 @@ enum Commands {
         #[clap(short, long, help = "The Canvas assignment ID")]
         assignment: u32,
     },
-    #[clap(about = "List available courses on Canvas where you are either a teacher or a TA.")]
-    Courses,
-    #[clap(about = "List all available assignments for a specific course on Canvas.")]
-    Assignments { course_id: String },
 }
 
 #[derive(Parser)]

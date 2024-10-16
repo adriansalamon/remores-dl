@@ -1,7 +1,8 @@
 ## Remores-dl
 
 Simple CLI tool to download canvas submissions for students that have
-booked a time slot on REMORES.
+booked a time slot on REMORES. Perhaps slightly useful for TAs in
+DD2350 at KTH, and useful for no one else.
 
 It scrapes the REMORES website, and finds time slots that have been
 booked by students. It then tries to find matching submissions on
