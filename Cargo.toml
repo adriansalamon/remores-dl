@@ -1,0 +1,19 @@
+[package]
+name = "remores-dl"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# clap needs derive feature
+[dependencies]
+anyhow = "1.0.89"
+chrono = { version = "0.4.38", features = ["serde"] }
+clap = { version = "4.5.20", features = ["derive", "env"] }
+inquire = "0.7.5"
+reqwest = { version = "0.12.8", features = ["json"] }
+scraper = "0.20.0"
+serde = { version = "1.0.210", features = ["serde_derive"] }
+serde_json = "1.0.128"
+strsim = "0.11.1"
+tokio = { version = "1.40.0", features = ["full"] }
