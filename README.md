@@ -14,11 +14,16 @@ Settings -> Approved Integrations` on Canvas.
 
 ### Installation
 
-If you have a working Rust compiler (if not see [here](https://rustup.rs/)), you can install by simply running:
+If you have a working Rust compiler (if not see [here](https://rustup.rs/)), 
+you can install by simply running:
 
 ```
 cargo install --git https://github.com/adriansalamon/remores-dl
 ```
+
+Otherwise, you can grab a precompiled binary from 
+[releases](https://github.com/adriansalamon/remores-dl/releases/latest)
+for your architecture. Let me know if you need more architectures added.
 
 ### Usage
 
