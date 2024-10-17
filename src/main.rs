@@ -25,6 +25,13 @@ enum Commands {
         #[clap(short, long, help = "The Canvas assignment ID")]
         assignment: u32,
     },
+    #[clap(about = "List all student name with bookings from REMORES.")]
+    Bookings {
+        #[clap(short, long, help = "The REMORES repository name")]
+        repo: String,
+        #[clap(short, long, help = "Your KTH ID, eg. `asalamon`")]
+        kth_id: String,
+    },
 }
 
 #[derive(Parser)]
@@ -135,6 +142,21 @@ async fn main() -> Result<(), anyhow::Error> {
                     }
                 }
             }
+        }
+        Some(Commands::Bookings { repo, kth_id }) => {
+            let remores = Remores::new(repo.to_string());
+
+            println!("Finding bookings for {} on REMORES...", repo);
+            let bookings = remores.get_bookings_for(kth_id.to_string()).await?;
+
+            let names = bookings
+                .iter()
+                .map(|booking| format!("\"{}\"", booking.name))
+                .collect::<Vec<String>>()
+                .join(",");
+
+            println!("Found {} bookings:", bookings.len());
+            print!("{}\n", names);
         }
         None => {
             eprintln!("No command provided");
